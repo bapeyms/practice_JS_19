@@ -32,8 +32,31 @@
         #stringAllowed{
             display: flex;
             flex-direction: column;
+            margin-bottom: 0.5em;
+        }
+        #generate{
+            width: 100px;
+            height: 25px;
+            margin-bottom: 0.5em;
+        }
+        hr{
+            margin-top: 1em;
+            margin-bottom: 1em;
+            width: 99%;
+        }
+        #resultDiv{
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        #resultText{
+            height: 20px;
+            width: 200px;
         }
     </style>
+    <script>
+        let amountOfStringsJS = parseFloat($("#amountOfStrings").val());
+    </script>
 </head>
 <body>
     <div class="taskSettings">
@@ -46,15 +69,15 @@
         <div id="stringAllowed">
             <p>Which characters are allowed to occur in the string?</p>
             <label>
-                <input type="checkbox" name="settings" id="numeric">
+                <input type="checkbox" name="settings" id="numeric" checked>
                 Numeric digits (0-9)
             </label>
             <label>
-                <input type="checkbox" name="settings" id="uppercase">
+                <input type="checkbox" name="settings" id="uppercase" checked>
                 Uppercase letters (A-Z)
             </label>
             <label>
-                <input type="checkbox" name="settings" id="lowercase">
+                <input type="checkbox" name="settings" id="lowercase" checked>
                 Lowercase letters (a-z)
             </label>
         </div>
@@ -62,7 +85,7 @@
         <hr>
         <div id="resultDiv">
             <h3 id="result">Result: </h3>
-            <input type="text">
+            <input type="text" id="resultText">
         </div>
     </div>
     
