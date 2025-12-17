@@ -55,7 +55,39 @@
         }
     </style>
     <script>
-        let amountOfStringsJS = parseFloat($("#amountOfStrings").val());
+        $(document).ready(function(){
+            $("#generate").click(function(){
+                let amountOfStringsJS = parseInt($("#amountOfStrings").val());
+                if (amountOfStringsJS <= 0 || isNaN(amountOfStringsJS)){
+                    alert("INVALID VALUE!");
+                    return;
+                }
+                let allowedNumbers = "1234567890";
+                let allowedUpper = "POIUYTREWQLKJHGFDSAMNBVCXZ";
+                let allowedLower = "poiuytrewqlkjhgfdsamnbvcxz";
+                let allowed = "";
+                if ($("#numeric").is(":checked")) {
+                    allowed  += allowedNumbers;
+                }
+                if ($("#uppercase").is(":checked")) {
+                    allowed  += allowedUpper;
+                }
+                if ($("#lowercase").is(":checked")) {
+                    allowed  += allowedLower;
+                }
+                if (allowed.length === 0){
+                    alert("SELECT AT LEAST ONE CHECKBOX!");
+                    return;
+                }
+                let resultGenerate = "";
+                for (let i = 0; i < amountOfStringsJS; i++){
+                    let randomResult = Math.floor(Math.random() * allowed.length);
+                    resultGenerate += allowed[randomResult];
+                }
+                $("#resultText").val(resultGenerate);
+            })
+        })
+        
     </script>
 </head>
 <body>
@@ -63,7 +95,7 @@
         <h3 id="title">Random String Generator</h3>
         <div id="stringLength">
             <p>String should be</p>
-            <input type="text" id="amountOfStrings" value="">
+            <input type="number" id="amountOfStrings" value="">
             <p> character long</p>
         </div>
         <div id="stringAllowed">
